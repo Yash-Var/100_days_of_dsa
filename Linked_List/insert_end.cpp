@@ -12,11 +12,20 @@ struct Node
         next = NULL;
     }
 };
-Node *insert(Node *head,int x)
+
+Node *end(Node *head, int x)
 {
-    Node *temp=new Node(x);
-    temp->next=head;
-    return temp;
+    Node *temp = new Node(x);
+    if (head == NULL)
+        return temp;
+    Node *curr = head;
+    while (curr->next != NULL)
+    {
+   
+        curr = curr->next;
+    }
+    curr->next = temp;
+    return head;
 }
 
 void output(Node *head)
@@ -28,7 +37,7 @@ void output(Node *head)
         cout << cur->data << " ";
         cur = cur->next;
     }
-    cout<<endl;
+    cout << endl;
 }
 int main()
 {
@@ -36,8 +45,12 @@ int main()
     head->next = new Node(20);
     head->next->next = new Node(30);
     output(head);
-    head=insert(head,50);
+
+    head = end(head, 50);
+    // cout<<"akshat"<<endl;
     output(head);
-    
     return 0;
 }
+
+
+
