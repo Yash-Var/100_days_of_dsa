@@ -22,18 +22,41 @@ void output(Node *head)
 }
 bool isbool(Node *head)
 {
-    Node *cur=head;
-    
+    Node *cur = head;
+    Node *temp = new Node(45);
+    while (cur != NULL)
+    {
+        if (cur->next == NULL)
+        {
+            return false;
+        }
+        if (cur->next == temp)
+        {
+            return temp;
+        }
+        Node *cur_next=cur->next;
+        cur->next=temp;
+        cur=cur_next;
+
+    }
+    return false;
 }
 int main()
 {
     Node *head = new Node(10);
     head->next = new Node(20);
     head->next->next = new Node(30);
-    head->next->next->next=head->next;
-    output(head);
-    if(isbool(head)){
-        cout<<"Loop is present in the linked list\n"<<endl;
-    }else cout<<"Loop is not present in the Linked list\n"<<endl;
+    Node *flag=new Node(90);
+    head->next->next->next=flag;
+  flag->next=head;
+    // output(head);
+    if (isbool(head))
+    {
+        cout << "Loop is present in the linked list\n"
+             << endl;
+    }
+    else
+        cout << "Loop is not present in the Linked list\n"
+             << endl;
     return 0;
 }
