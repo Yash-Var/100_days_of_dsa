@@ -1,22 +1,18 @@
 #include<iostream>
 using namespace std;
-int Factorial(int n);
+int sum(int a[],int size)
+{
+    if(size==0)
+    return 0;
+    if(size>0)
+    return a[0]+sum(a+1,size-1);
+    
+
+}
 int main()
 {
-    int n;
-    cout << "Enter a number: ";
-    cin >> n;
-    n = Factorial(n);
-    cout << n << endl;
-    return 0;
-}
-int Factorial(int n)
-{
-    if(n==0)
-    {
-        return 1;
-    }
-    int so = Factorial(n-1);
-    cout << "n " << n << "   so " << so << endl;  // for better understanding
-    return n * so;
+  int a[]={3,2,5,10,6};
+  int size=5;
+  cout<<sum(a,size);
+  return 0;
 }
